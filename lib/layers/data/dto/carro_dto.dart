@@ -23,7 +23,7 @@ class CarroDto extends CarroEntity {
     };
   }
 
-  CarroDto fromMap(Map map) {
+  static fromMap(Map map) {
     return CarroDto(
       placa: map['placa'],
       quantidadeDePortas: map['quantidade_de_portas'],
