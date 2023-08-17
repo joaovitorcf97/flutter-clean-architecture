@@ -1,5 +1,6 @@
 import 'package:arq/layers/data/dto/carro_dto.dart';
+import 'package:dartz/dartz.dart';
 
 abstract class GetCarrosPorCorDataSource {
-  CarroDto call(String cor);
+  Either<Exception, CarroDto> call(String cor);
 }

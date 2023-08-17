@@ -15,7 +15,11 @@ void main() {
 
       var result = useCase('azul');
 
-      expect(result, isInstanceOf<CarroEntity>());
+      late CarroEntity resultExpect;
+
+      result.fold((l) => null, (r) => resultExpect = r);
+
+      expect(resultExpect, isInstanceOf<CarroEntity>());
     },
   );
 
@@ -25,8 +29,11 @@ void main() {
     );
 
     var result = useCase('vermelho');
+    late CarroEntity resultExpect;
 
-    expect(result.qtdPortas, 4);
+    result.fold((l) => null, (r) => resultExpect = r);
+
+    expect(resultExpect.qtdPortas, 4);
   });
 
   test(
@@ -38,7 +45,11 @@ void main() {
 
       var result = useCase('verde');
 
-      expect(result.qtdPortas, 2);
+      late CarroEntity resultExpect;
+
+      result.fold((l) => null, (r) => resultExpect = r);
+
+      expect(resultExpect.qtdPortas, 2);
     },
   );
 }

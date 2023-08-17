@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:arq/layers/domain/entities/carro_entity.dart';
 import 'package:arq/layers/domain/usecases/get_carros_por_cor/get_carros_por_cor_usecase.dart';
 import 'package:arq/layers/domain/usecases/salvar_carro_favorito_usecase/salvar_carro_favorito_usecase.dart';
@@ -16,7 +18,11 @@ class CarroController {
   late CarroEntity carro;
 
   getCarrosPorCor(String cor) {
-    carro = _carrosPorCorUseCase(cor);
+    var result = _carrosPorCorUseCase(cor);
+    result.fold(
+      (error) => log(error.toString()),
+      (success) => carro = success,
+    );
   }
 
   salvarCarroFavorito(CarroEntity carro) async {

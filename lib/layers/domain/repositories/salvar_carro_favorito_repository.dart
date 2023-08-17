@@ -1,5 +1,7 @@
+import 'package:dartz/dartz.dart';
+
 import '../entities/carro_entity.dart';
 
 abstract class SalvarCarroFavoritoRepository {
-  Future<bool> call(CarroEntity carroEntity);
+  Future<Either<Exception, bool>> call(CarroEntity carroEntity);
 }
